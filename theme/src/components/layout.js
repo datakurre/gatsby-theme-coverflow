@@ -1,10 +1,20 @@
-import React from "react"
-import { css, Global } from "@emotion/core"
-import { Layout as StyledLayout, Header, Main, Container } from "theme-ui"
-import { graphql, useStaticQuery } from "gatsby"
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+const Body = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: ${props => (props.colors && props.colors.backdrop) || '#333'};
+`;
+
+const Layout = ({ children, colors }) => {
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -12,25 +22,13 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
-
+  `);
   return (
-    <StyledLayout>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
-      <Header>
-        <span>{data.site.siteMetadata.title}</span>
-      </Header>
-      <Main>
-        <Container>{children}</Container>
-      </Main>
-    </StyledLayout>
-  )
-}
+    <>
+      <Helmet title={site.siteMetadata.title} />
+      <Body colors={colors}>{children}</Body>
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

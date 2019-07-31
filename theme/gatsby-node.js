@@ -1,21 +1,30 @@
-exports.createPages = ({ actions, reporter }) => {
-  reporter.warn("make sure to load data from somewhere!")
-
-  // TODO replace this with data from somewhere
+exports.createPages = async (
+  { graphql, actions, reporter },
+  { path = '/coverflow/', colors = {}, query }
+) => {
+  const result = query
+    ? await graphql(query)
+    : {
+        data: {
+          allCoverPages: {
+            edges: [
+              {
+                node: {
+                  title: 'TODO: Configure Coverflow',
+                  link:
+                    'https://github.com/datakurre/gatsby-theme-coverflow.git',
+                },
+              },
+            ],
+          },
+        },
+      };
   actions.createPage({
-    path: "/",
-    component: require.resolve("./src/templates/page.js"),
+    path,
+    component: require.resolve('./src/templates/coverflow.js'),
     context: {
-      heading: "Your Theme Here",
-      content: `
-        <p>
-          Use this handy theme example as the basis for your own amazing theme!
-        </p>
-        <p>
-          For more information, see 
-          <a href="https://themejam.gatsbyjs.org">themejam.gatsbyjs.org</a>.
-        </p>
-      `,
+      colors,
+      ...result.data,
     },
-  })
-}
+  });
+};
