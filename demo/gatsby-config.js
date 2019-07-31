@@ -9,13 +9,13 @@ module.exports = {
     {
       resolve: `gatsby-theme-blog`,
       options: {
-        basePath: `/`,
+        basePath: `/blog/`,
       },
     },
     {
       resolve: "gatsby-theme-coverflow",
       options: {
-        path: `blog-posts`,
+        path: `/`,
         colors: {
           text: `#fff`,
           cover: `#663399`,

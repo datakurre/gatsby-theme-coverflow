@@ -5,7 +5,7 @@ A Gatsby theme for creating cover flow pages with configurable sources.
 See https://datakurre.github.io/gatsby-theme-coverflow/ for a live demo where
 cover flow has been mixed with gatsby-theme-blog, especially:
 
-* https://datakurre.github.io/gatsby-theme-coverflow/blog-posts/
+* https://datakurre.github.io/gatsby-theme-coverflow/
 * https://datakurre.github.io/gatsby-theme-coverflow/rss-feed/
 * https://datakurre.github.io/gatsby-theme-coverflow/coverflow/
 

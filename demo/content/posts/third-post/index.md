@@ -1,9 +1,9 @@
 ---
-title: Gatsby Theme Blog Cover Flow
+title: Gatsby Theme Blog with Cover Flow
 date: "2019-07-31T23:00:00Z"
 ---
 
-This is how gatsby-theme-coverflow can be configured to create [a blog post cover flow with gatsby-theme-blog](../blog-posts):
+This is how gatsby-theme-coverflow can be configured to create [a blog post cover flow for gatsby-theme-blog](../..):
 
 ```js
 module.exports = {
@@ -11,13 +11,13 @@ module.exports = {
     {
       resolve: `gatsby-theme-blog`,
       options: {
-        basePath: `/`,
+        basePath: `/blog/`,
       },
     },
     {
       resolve: "gatsby-theme-coverflow",
       options: {
-        path: `blog-posts`,
+        path: `/`,
         colors: {
           text: `#fff`,
           cover: `#663399`,
