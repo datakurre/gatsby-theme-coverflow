@@ -1,58 +1,87 @@
-# Gatsby Theme Jam Submission Example
+# Cover flow Gatsby theme plugin
 
-This repo is an example and potential starting point for theme creators.
+A Gatsby theme for creating cover flow pages with configurable sources.
 
-It includes:
-- a bare-bones theme (located in `theme/`) that includes basic setup
-- a demo site (located in `demo/`) that installs the theme
-- a Yarn workspaces configuration so the theme and demo can be worked on simultaneously
+See https://datakurre.github.io/gatsby-theme-coverflow/ for an example where
+cover flow has been mixed with gatsby-theme-blog.
 
-## How to use this repo
+## Installation
 
-**NOTE:** Make sure to replace `USERNAME` with your GitHub username and `THEMENAME` with your theme name.
+Manually add to your site
 
-1.  Fork this repo.
+```sh
+npm install --save gatsby-theme-coverflow
+```
+## Usage
 
-2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
+### Theme options
 
-3.  Get the theme set up locally.
-    ```sh
-    # clone the repo
-    git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
+| Key           | Default value    | Description                                                                                               |
+| ------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
+| `path    `    | `/coverflow/`    | Url for the created cover flow page                                                                       |
+| `colors`      | {}               | Configurable text, cover and backdrop colors (see example usage)                                          |
+| `query`       | ``               | GraphQL query for fetching the cover flow data (see example usage)                                        |
 
-    # move into the directory
-    cd gatsby-theme-THEMENAME
+### Example usage
 
-    # install dependencies
-    yarn
-    ```
-
-4.  Update `theme/package.json` with your info.
-    ```diff
-      {
-    +   "name": "gatsby-theme-THEMENAME",
-    +   "author": "Your Name <name@example.com>",
-        "repository": {
-          "type": "git",
-    +     "url": "https://github.com/USERNAME/gatsby-theme-THEMENAME.git"
+```js
+// gatsby-config.js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-theme-blog`,
+      options: {
+        basePath: `/`,
+      },
+    },
+    {
+      resolve: "gatsby-theme-coverflow",
+      options: {
+        path: `blog-posts`,
+        colors: {
+          text: `#fff`,
+          cover: `#663399`,
+          backdrop: `#333`,
         },
-    ```
-
-5.  Start the demo site.
-    ```sh
-    yarn workspace demo develop
-    ```
-
-    The demo will start at http://localhost:8000
-
-    **NOTE:** If you’re new to Yarn workspaces, check out [this post](https://www.gatsbyjs.org/blog/2019-05-22-setting-up-yarn-workspaces-for-theme-development/) for details.
-
-6.  Start editing the theme! The demo site is configured to use the local theme, so any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
-
-7.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
-
-8.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
-
-## More information
-
-For contest rules and more information, see [the Theme Jam website](https://themejam.gatsbyjs.org).
+        query: `
+{
+  allCoverPages: allBlogPost {
+    edges {
+      node {
+        title
+        link: slug
+      }
+    }
+  }
+}
+      `,
+      },
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: `https://www.gatsbyjs.org/blog/rss.xml`,
+        name: `GatsbyBlog`,
+      },
+    },
+    {
+      resolve: "gatsby-theme-coverflow",
+      options: {
+        path: `rss-feed`,
+        query: `
+{
+  allCoverPages: allFeedGatsbyBlog {
+    edges {
+      node {
+        title
+        link
+      }
+    } 
+  }
+}
+      `,
+      },
+    },
+  ],
+}
+```

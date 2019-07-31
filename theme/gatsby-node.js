@@ -10,7 +10,7 @@ exports.createPages = async (
             edges: [
               {
                 node: {
-                  title: 'TODO: Configure Coverflow',
+                  title: 'TODO: Configure Cover Flow',
                   link:
                     'https://github.com/datakurre/gatsby-theme-coverflow.git',
                 },

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Theme Coverflow',
+    title: 'Gatsby Theme Cover Flow',
   },
   pathPrefix: 'gatsby-theme-coverflow',
 };
