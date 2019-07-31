@@ -4,7 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 import EventListener from 'react-event-listener';
 import keycode from 'keycode';
 import { Location } from '@reach/router';
-import { navigate } from 'gatsby';
+import { navigate, withPrefix } from 'gatsby';
 import { bindKeyboard } from 'react-swipeable-views-utils';
 import styled from 'styled-components';
 
@@ -31,7 +31,12 @@ const AnimatedDiv = styled(Animated.div)`
 `;
 
 const handleChangeIndex = (location, position) => index => {
-  navigate(`${location.pathname}/#${index}`);
+  let pathname = location.pathname;
+  let prefix = withPrefix('/');
+  if (pathname.startsWith(prefix)) {
+    pathname = pathname.substr(prefix.length);
+  }
+  navigate(`${pathname}/#${index}`);
   Animated.spring(position, { toValue: index }).start();
 };
 
