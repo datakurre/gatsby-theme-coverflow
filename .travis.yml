@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- 10.1.0
+cache:
+  yarn: true
+script:
+- yarn
+- yarn workspace demo build --prefix-paths
+- touch demo/public/.nojekyll
+deploy:
+  provider: pages
+  github_token: "$GITHUB_TOKEN"
+  local-dir: "./demo/public"
+  keep-history: false
+  skip-cleanup: true
+  target-branch: gh-pages
+  on:
+    branch: master
+env:
+  global:
+    secure: jL8ss/eyqmvCORDujRIx5sQtzP/32e9d8dl2HPEnMU4a6xCQV1V6bbvQpbSzHw+Ob2NJ+5Ql8sIUbOD37HbDEb5/8uy8tE5dFksMGzjE+7jNT6Do6UAd6qhwiFAwVMyEijndpmX8GfjyQsAV/pVyxX9XmvqIvNW0zUTbHdVpHm0qPIE7/OnKamnp+1h4fZFjJziK//nD+h/Ov25KmOT10Cj2ZwR2ennNnwSK2yYvTUuOgn5vJDW4ABE6Yz4EJt5Lq3LVG70Sm7a+VLvboC6rODIw5jdHs0awgmyWSfsLMV91x3Y+BFVgEZjvAlSdIMpdwge5+jU55RuOm7aXUbnrt5R2yenvT4ueE3iuLmL9gwhybwDvW+nN3Ynj8lbRIFLyS6yKzC/hno07Vhck7cONCc+466n6xJZGVHjRosDsMB7iZRntQ/HxIYx9Pxhk7Kiv0rxYv2a8mkR7XRXShfFgy5e/ItWAIuPFI3KNx6c3nPIhMgv+gv0AdsZzpNFxzHj1SZfKgn/LSHgocEkY1IaQAFqQ+pX+6BUogOKO2e4qcaGu01uH5q2mfAzW4P5tllv5MGc9BOVdcy3Yf9R4h/4y3rl0cRKufdprfLpznGSTlepI+353B0S7iZfINRrb7/NPUMDTzrrcii49CGoQ5fmFGJGN6Ubduw7iHaE4GAdsoew=
