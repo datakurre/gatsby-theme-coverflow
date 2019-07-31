@@ -25,7 +25,7 @@ module.exports = {
         },
         query: `
 {
-  allCoverPages: allBlogPost {
+  allCoverPages: allBlogPost(sort: {fields: date, order: DESC}) {
     edges {
       node {
         title

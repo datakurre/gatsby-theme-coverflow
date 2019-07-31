@@ -5,8 +5,8 @@ A Gatsby theme for creating cover flow pages with configurable sources.
 See https://datakurre.github.io/gatsby-theme-coverflow/ for a live demo where
 cover flow has been mixed with gatsby-theme-blog, especially:
 
-* https://datakurre.github.io/gatsby-theme-coverflow/
-* https://datakurre.github.io/gatsby-theme-coverflow/rss-feed/
+* https://datakurre.github.io/gatsby-theme-coverflow/#1
+* https://datakurre.github.io/gatsby-theme-coverflow/rss-feed/#1
 * https://datakurre.github.io/gatsby-theme-coverflow/coverflow/
 
 Cover flow supports keyboard navigation and both internal and external
@@ -52,7 +52,7 @@ module.exports = {
         },
         query: `
 {
-  allCoverPages: allBlogPost {
+  allCoverPages: allBlogPost(sort: {fields: date, order: DESC}) {
     edges {
       node {
         title
