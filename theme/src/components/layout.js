@@ -25,7 +25,7 @@ const Layout = ({ children, colors }) => {
   `);
   return (
     <>
-      <Helmet title={site.siteMetadata.title} />
+      <Helmet title={site.siteMetadata.title} htmlAttributes={{ lang: 'en' }} />
       <Body colors={colors}>{children}</Body>
     </>
   );

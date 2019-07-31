@@ -64,4 +64,4 @@ module.exports = {
       resolve: "gatsby-theme-coverflow",
     },
   ],
-};
+}
