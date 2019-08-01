@@ -45,7 +45,7 @@ const handleChangeIndex = (location, position) => index => {
   if (pathname.startsWith(prefix)) {
     pathname = pathname.substr(prefix.length);
   }
-  navigate(`${pathname}/#${index}`);
+  navigate(`${pathname}#${index}`);
   Animated.spring(position, { toValue: index }).start();
 };
 
@@ -79,7 +79,7 @@ const CoverFlow = ({ children }) => {
           ),
           children.length
         );
-        if (position._value !== index) {
+        if (position._value === 0 && position._value !== index) {
           handleSwitch(position, setPosition)(index);
         }
         return (
