@@ -6,7 +6,7 @@ import keycode from 'keycode';
 import { Location } from '@reach/router';
 import { navigate, withPrefix } from 'gatsby';
 import { bindKeyboard } from 'react-swipeable-views-utils';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const KeyboardBoundSwipeableViews = styled(bindKeyboard(SwipeableViews))`
   padding: 10vh calc((100vw - 80vh) * 0.5);

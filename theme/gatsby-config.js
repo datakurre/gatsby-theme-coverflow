@@ -4,8 +4,8 @@ module.exports = {
   },
   pathPrefix: 'gatsby-theme-coverflow',
   plugins: [
-//    {
-//      resolve: `gatsby-plugin-styled-components`,
-//    },
+    {
+      resolve: `gatsby-plugin-theme-ui`,
+    },
   ],
 };
