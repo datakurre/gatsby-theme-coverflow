@@ -56,7 +56,6 @@ const handleSwitch = (position, setPosition) => index => {
 
 const handleKeyDown = (index, children) => event => {
   if (keycode(event) === 'enter') {
-    console.log(children[index]);
     if (children[index].key.match(/^\//)) {
       navigate(children[index].key);
     } else {
@@ -79,12 +78,15 @@ const CoverFlow = ({ children }) => {
           ),
           children.length
         );
+        let key = "default";
         if (position._value === 0 && index) {
+          key = "loading";
+          handleSwitch(position, setPosition)(index);
           handleChangeIndex(location, position)(index);
-          index = 0;
         }
         return (
           <EventListener
+            key={key}
             target="window"
             onKeyDown={handleKeyDown(index, children)}
           >
