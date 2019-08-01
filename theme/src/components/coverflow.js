@@ -135,6 +135,9 @@ const CoverFlow = ({ children }) => {
                         transform: [{ scale }, { translateX }],
                         zIndex: index === currentIndex ? 1 : null,
                       })}
+                      onClick={() =>
+                        handleChangeIndex(location, position)(currentIndex)
+                      }
                     >
                       {child}
                     </AnimatedDiv>
