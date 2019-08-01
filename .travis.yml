@@ -5,6 +5,7 @@ cache:
   yarn: true
 script:
 - yarn
+- yarn workspace demo clean
 - yarn workspace demo build --prefix-paths
 - touch demo/public/.nojekyll
 deploy:
