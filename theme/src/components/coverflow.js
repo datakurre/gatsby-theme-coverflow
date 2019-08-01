@@ -79,8 +79,9 @@ const CoverFlow = ({ children }) => {
           ),
           children.length
         );
-        if (position._value === 0 && position._value !== index) {
-          handleSwitch(position, setPosition)(index);
+        if (position._value === 0 && index) {
+          handleChangeIndex(location, position)(index);
+          index = 0;
         }
         return (
           <EventListener
@@ -129,7 +130,7 @@ const CoverFlow = ({ children }) => {
                   });
                   return (
                     <AnimatedDiv
-                      key={String(currentIndex)}
+                      key={child.key}
                       style={Object.assign({
                         opacity,
                         transform: [{ scale }, { translateX }],
