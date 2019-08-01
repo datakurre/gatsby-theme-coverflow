@@ -3,7 +3,7 @@ title: Gatsby Theme Blog with Cover Flow
 date: "2019-07-31T23:00:00Z"
 ---
 
-This is how gatsby-theme-coverflow can be configured to create [a blog post cover flow for gatsby-theme-blog](../..):
+This is how gatsby-theme-coverflow can be configured to create [a blog post cover flow for gatsby-theme-blog](/):
 
 ```js
 module.exports = {
