@@ -9,7 +9,14 @@ import { bindKeyboard } from 'react-swipeable-views-utils';
 import styled from '@emotion/styled';
 
 const KeyboardBoundSwipeableViews = styled(bindKeyboard(SwipeableViews))`
-  padding: 10vh calc((100vw - 80vh) * 0.5);
+  @media (max-aspect-ratio: 1/1) {
+    padding: calc((100vh - 80vw) * 0.5) 10vw;
+  }
+
+  @media (min-aspect-ratio: 1/1) {
+    padding: 10vh calc((100vw - 80vh) * 0.5);
+  }
+
   overflow-y: hidden;
 
   .react-swipeable-view-container {
@@ -25,6 +32,8 @@ const KeyboardBoundSwipeableViews = styled(bindKeyboard(SwipeableViews))`
 const AnimatedDiv = styled(Animated.div)`
   height: 80vh;
   width: 80vh;
+  max-height: 80vw;
+  max-width: 80vw;
   position: relative;
   overflow-y: hidden;
   overflow-x: hidden;
