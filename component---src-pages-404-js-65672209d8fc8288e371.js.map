@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/404.js"],"names":["__webpack_exports__","Object","_emotion_core__WEBPACK_IMPORTED_MODULE_0__"],"mappings":"iHAEeA,EAAA,0BAAMC,OAAAC,EAAA,EAAAD,CAAA","file":"component---src-pages-404-js-65672209d8fc8288e371.js","sourcesContent":["import React from \"react\"\n\nexport default () => <div>404</div>\n"],"sourceRoot":""}
